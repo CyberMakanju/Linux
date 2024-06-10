@@ -1,1 +1,61 @@
+1. Create a Linux Mint Virtual Machine
 
+Prerequisites:
+
+	•	Install VMware or any other virtualization software.
+	•	Download the Linux Mint ISO from the official website.
+
+Steps:
+
+	1.	Open VirtualBox:
+	•	Launch VirtualBox and click on “New” to create a new virtual machine.
+	2.	Name and Operating System:
+	•	Name your VM (e.g., “Linux Mint”).
+	•	Set the type to “Linux” and the version to “Ubuntu (64-bit)”.
+	3.	Memory Size:
+	•	Allocate memory (RAM) for your VM. 2GB (2048 MB) is a good starting point.
+	4.	Hard Disk:
+	•	Create a virtual hard disk. Choose “VDI” (VirtualBox Disk Image).
+	•	Choose “Dynamically allocated” or “Fixed size” as per your preference.
+	•	Allocate at least 20GB of storage.
+	5.	Start the VM:
+	•	Start the VM and select the Linux Mint ISO file as the startup disk.
+	6.	Install Linux Mint:
+	•	Follow the on-screen instructions to install Linux Mint on your VM.
+Check Distribution:
+
+$lsb_release -a
+
+# No LSB modules are available.
+# Distributor ID: Linuxmint
+# Description:    Linux Mint 21.3
+# Release:        21.3
+# Codename:       Virginia
+
+Check Package Manager:
+
+Linux Mint uses apt as its package manager. You can verify this by running:
+which apt
+# /usr/bin/apt
+
+3. Check CLI Editor
+Check Installed Editors:
+nano --version
+# GNU nano, version 6.2
+vi --version
+# VIM - Vi IMproved 8.2
+vim --version
+# VIM - Vi IMproved 8.2
+By default, Nano is typically configured as the default editor in Linux Mint
+
+
+4. Check Software Center/Manager
+
+Linux Mint uses the “Software Manager” (mintinstall) for its software center.
+which mintinstall
+# /usr/bin/mintinstall
+
+5. Check Default Shell
+The default shell for the user is usually Bash.
+echo $SHELL
+# /bin/bash
