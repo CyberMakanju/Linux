@@ -1,1 +1,49 @@
 
+Write a bash script using Vim editor that installs the latest Java version and checks whether Java was installed successfully by executing a Java -version command.
+
+After the installation command, it checks 3 conditions:
+
+1. Whether Java is installed at all
+2. whether an older Java version is installed (java version lower than 11)
+3. whether a Java version of 11 or higher was installed
+
+
+
+1.	Open Vim Editor:
+
+The script in Vim:
+#!/bin/bash
+
+# Update Package index
+sudo apt update
+
+# Install the latest Java version
+sudo apt install -y default-jdk
+
+# Check Java installation
+java -version &> /dev/null
+if [ $? -ne 0 ]; then
+    echo "Java is not installed."
+    exit 1
+else
+    java_version=$(java -version 2>&1 | awk -F[\"_] '/version/ {print $2}')
+    echo "Java version: $java_version"
+
+    # Check if the installed Java version is lower than 11
+    if [[ "$java_version" < "11" ]]; then
+        echo "An older Java version (lower than 11) is installed."
+    else
+        echo "Java version 11 or higher is installed."
+    fi
+fi
+
+Explanation:
+
+	•	The script first updates the package index using sudo apt update.
+	•	It then installs the latest Java Development Kit (JDK) using sudo apt install -y default-jdk.
+	•	The script checks if Java is installed by executing the Java -version and checking the exit status ($?).
+	•	If Java is not installed, it prints a message and exits with a status code of 1.
+	•	If Java is installed, it retrieves the Java version using awk to parse the output of the Java -version.
+	•	It then compares the Java version to determine if it is lower than 11 or 11 and higher, printing the appropriate message.
+
+This script ensures that the latest version of Java is installed and verifies the installation by checking the version of Java installed on the system.
